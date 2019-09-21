@@ -11,31 +11,30 @@ export type FieldTypes =
   'list'
 
 export interface ISelectOptions {
-  value: String
-  label: String
+  value: string
+  label: string
 }
 
-
 export interface IFormTextFieldProps {
-  error: Boolean
-  helperText: String
-  label: String
-  value: String
+  error: boolean
+  helperText: string
+  label: string
+  value: string
   // Handlers
   onBlur: Function
   onChange: Function
 }
 
-export interface IFormFieldArgs<T = String> {
-  name: String
+export interface IFormFieldArgs<T = string> {
+  name: string
   type: FieldTypes
-  helperText: String
-  optional: Boolean
-  requiredMessage?: String
-  label: String
+  helperText: string
+  optional: boolean
+  requiredMessage?: string
+  label: string
   normalize?: Function
   value: T
-  validate?: (value: T, fieldName: String, getValues: () => IValues) => String
+  validate?: (value: T, fieldName: string, getValues: () => IValues) => string
   options?: Array<ISelectOptions>
   fields?: Array<IFormFieldArgs<>>
   valueFromChange?: (event: Object) => T
@@ -44,21 +43,21 @@ export interface IFormFieldArgs<T = String> {
 
 export interface IFormField {
   props: IFormTextFieldProps
-  setValidationResult: (result: String) => void
-  setValue: (value: String) => void
+  setValidationResult: (result: string) => void
+  setValue: (value: string) => void
   validate: () => void
 }
 
-export function useFormField(state: Map<String, any>, dispatch: Function, fieldArgs?: IFormFieldArgs): IFormField
+export function useFormField(state: Map<string, any>, dispatch: Function, fieldArgs?: IFormFieldArgs): IFormField
 
 // Form
 export interface IValidationErrors {
-  [key: string]: String
+  [key: string]: string
 }
 
 export interface IValidationResult {
   errors: IValidationErrors,
-  isValid: Boolean
+  isValid: boolean
 }
 
 function listener(value: any): void
@@ -67,28 +66,28 @@ export interface OptionListeners {
 }
 
 export interface IFormOptions {
-  optionalLabelFormatter?: (label: String) => String
+  optionalLabelFormatter?: (label: string) => string
   listeners: OptionListeners
   logPerformance: boolean,
 }
 
 export interface IFormStateResolvers {
-  getAnyTouched: () => Boolean
-  getIsPristine: () => Boolean
+  getAnyTouched: () => boolean
+  getIsPristine: () => boolean
 }
 
 export interface IForm extends IFormStateResolvers {
   Form: React.Component
-  submit: (skipValidation: Boolean) => void
+  submit: (skipValidation: boolean) => void
   validate: () => IValidationResult
   reset: Function
-  setValue: (fieldName: String, value: any) => void
+  setValue: (fieldName: string, value: any) => void
   getValuesIfFormValid: Function
   addField: (field: IFormFieldArgs) => void
-  removeField: (fieldName: String) => void
-  addFieldListener: (fieldName: String, listener: Function) => void
-  removeFieldListener: (fieldName: String, listener: Function) => void
-  getValues: () => Map<String, any>
+  removeField: (fieldName: string) => void
+  addFieldListener: (fieldName: string, listener: Function) => void
+  removeFieldListener: (fieldName: string, listener: Function) => void
+  getValues: () => Map<string, any>
 }
 
 export interface IFields {
@@ -100,7 +99,7 @@ export interface IFormProps {
   submit: (values: IValues) => Promise<void>
   reset: () => void
   validate?: (values: IValues) => IValidationErrors | Array<(values: IValues) => IValidationErrors>
-  initialValues?: Map<String, any>
+  initialValues?: Map<string, any>
   options?: IFormOptions
 }
 
